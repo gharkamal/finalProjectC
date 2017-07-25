@@ -73,7 +73,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
     size_t row; // row counter
     size_t column; // column counter
    
-    // deal each of the cards
+/*    // deal each of the cards
     for ( card = 1; card <= CARDS; ++card ) {
 // loop through rows of wDeck
         for ( row = 0; row < SUITS; ++row ) {
@@ -88,7 +88,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
         } // end for
     } // end function deal
 
-
+*/
        printf("Five cards given: \n"); //five cards for user
    for ( card = 1; card <= 5; ++card ) {
       // loop through rows of wDeck
@@ -99,8 +99,8 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
             if (wDeck[row][column]==card) {
                printf( "%5s of %-8s\n", face[ column ], suit[ row ]); 
          	
-               hand[card][0] = column ;
-               hand[card][1] = row ;
+               hand[card][0] = row ;
+               hand[card][1] = column ;
             } // end if
          } // end for
       } // end for
