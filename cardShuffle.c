@@ -13,11 +13,11 @@ void shuffle(unsigned int wDeck[][ FACES ] ); // shuffling modifies wDeck
 void deal( unsigned int wDeck[][ FACES ], const char *wFace[], const char *wSuit[]); // dealing doesn't modify the arrays
 
 //functions to write
-void pair(unsigned int hand[][2], char *suit[], char *face[]);
-void threeOfKind(unsigned int hand[][2], char *suit[], char *face[]);
-void fourOfKind(unsigned int hand[][2], char *suit[], char *face[]);
-void straightHand( unsigned int hand[][2], char *suit[], char *face[]);
-void flushHand(unsigned int hand[][2], char *suit[], char *face[]);
+void pair(unsigned int hand[][2], const char *suit[], const char *face[]);
+void threeOfKind(unsigned int hand[][2], const char *suit[],const char *face[]);
+void fourOfKind(unsigned int hand[][2],const char *suit[],const char *face[]);
+void straightHand( unsigned int hand[][2],const char *suit[],const char *face[]);
+void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]);
 
 int main( void )
 {
@@ -32,11 +32,15 @@ int main( void )
     };
 // initialize deck array
     unsigned int deck[ SUITS ][ FACES ] = { 0 };
-    unsigned int hand[5][2];
+   unsigned int hand[5][2];
 
    srand( time( NULL ) ); // seed random-number generator 32
     shuffle( deck ); // shuffle the deck
     deal( deck, face, suit ); // deal the deck
+ 
+    threeOfKind(hand, suit, face);
+    straightHand(hand, suit, face);
+    pair(hand, suit, face);
 }//endmain
 
 // shuffle cards in deck
@@ -72,7 +76,8 @@ void deal( unsigned int wDeck[][ FACES ], const char *wFace[],const char *wSuit[
     size_t card; // card counter
     size_t row; // row counter
     size_t column; // column counter
-
+    int array[6];
+ unsigned int hand[5][2];
     // deal each of the cards
     for ( card = 1; card <= CARDS; ++card ) {
 // loop through rows of wDeck
@@ -87,9 +92,45 @@ void deal( unsigned int wDeck[][ FACES ], const char *wFace[],const char *wSuit[
             } // end for
         } // end for
     } // end function deal
+
+
+       printf("Five cards given: \n"); //five cards for user
+   for ( card = 1; card <= 5; ++card ) {
+      // loop through rows of wDeck
+      for ( row = 0; row < SUITS; ++row ) {
+         // loop through columns of wDeck for current row
+         for ( column = 0; column < FACES; ++column ) {
+            // if slot contains current card, display card
+            if (wDeck[row][column]==card) {
+               printf( "%5s of %-8s\n", wFace[ column ], wSuit[ row ]); 
+               hand[card][2] = (column + 1) + (row * 13);
+            } // end if
+         } // end for
+      } // end for
+   } // end for
 }
 
-void threeOfKind(unsigned int hand[][2], char *suit[], char *face[]){
+void pair(unsigned int hand[][2],const char *suit[],const char *face[]){
+	  //counter that records how many cards of each rank are in the hand
+    unsigned int counter[FACES] = {0};
+
+    //records how many cards of each rank are in teh hand
+    for (size_t i = 0; i < 5; ++i)
+    {
+        ++counter[hand[i][1]];
+    }
+
+    //print result if there is a three of a kind
+    for (size_t i = 0; i < FACES; ++i)
+    {
+        if (counter[i] == 2)
+            {
+                printf("The hand countains two %ss.\n", face[i]);
+            }    
+    }
+	}
+
+void threeOfKind(unsigned int hand[][2],const char *suit[],const char *face[]){
     //counter that records how many cards of each rank are in the hand
     unsigned int counter[FACES] = {0};
 
@@ -110,7 +151,7 @@ void threeOfKind(unsigned int hand[][2], char *suit[], char *face[]){
 }
 
 //determine if there is straight in hand
-void straightHand(unsigned int hand[][2], char *suit[], char *face[]){
+void straightHand(unsigned int hand[][2], const char *suit[], const char *face[]){
 	unsigned int s[5] = {0}; //array that holds a copy of hand
 	unsigned int temp; //temp int
 
