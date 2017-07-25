@@ -10,7 +10,7 @@
 
 // prototypes
 void shuffle(unsigned int wDeck[][ FACES ] ); // shuffling modifies wDeck
-void deal( unsigned int wDeck[][ FACES ], const char *wFace[], const char *wSuit[]); // dealing doesn't modify the arrays
+void deal( unsigned int wDeck[][ FACES ], unsigned int hand[][2], const char *wFace[], const char *wSuit[]); // dealing doesn't modify the arrays
 
 //functions to write
 void pair(unsigned int hand[][2], const char *suit[], const char *face[]);
@@ -36,11 +36,7 @@ int main( void )
 
    srand( time( NULL ) ); // seed random-number generator 32
     shuffle( deck ); // shuffle the deck
-    deal( deck, face, suit ); // deal the deck
- 
-    threeOfKind(hand, suit, face);
-    straightHand(hand, suit, face);
-    pair(hand, suit, face);
+    deal( deck, hand,  face, suit ); // deal the deck
 }//endmain
 
 // shuffle cards in deck
@@ -71,13 +67,12 @@ void shuffle( unsigned int wDeck[][ FACES ] )
 } // end function shuffle
 
 //deal cards in deck
-void deal( unsigned int wDeck[][ FACES ], const char *wFace[],const char *wSuit[] )
+void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[],const char *suit[] )
 {
     size_t card; // card counter
     size_t row; // row counter
     size_t column; // column counter
-    int array[6];
- unsigned int hand[5][2];
+   
     // deal each of the cards
     for ( card = 1; card <= CARDS; ++card ) {
 // loop through rows of wDeck
@@ -86,7 +81,7 @@ void deal( unsigned int wDeck[][ FACES ], const char *wFace[],const char *wSuit[
             for ( column = 0; column < FACES; ++column ) {
 // if slot contains current card, display card
                 if(wDeck[row][column]==card) {
-                    printf( "%5s of %-8s%c", wFace[ column ], wSuit[ row ],
+                    printf( "%5s of %-8s%c", face[ column ], suit[ row ],
                             card % 2 == 0 ? '\n' : '\t' ); // 2-column format
                 }//endif } // end for
             } // end for
@@ -102,12 +97,17 @@ void deal( unsigned int wDeck[][ FACES ], const char *wFace[],const char *wSuit[
          for ( column = 0; column < FACES; ++column ) {
             // if slot contains current card, display card
             if (wDeck[row][column]==card) {
-               printf( "%5s of %-8s\n", wFace[ column ], wSuit[ row ]); 
-               hand[card][2] = (column + 1) + (row * 13);
+               printf( "%5s of %-8s\n", face[ column ], suit[ row ]); 
+         	
+               hand[card][0] = column ;
+               hand[card][1] = row ;
             } // end if
          } // end for
       } // end for
    } // end for
+    threeOfKind(hand, suit, face);
+    straightHand(hand, suit, face);
+    pair(hand, suit, face);
 }
 
 void pair(unsigned int hand[][2],const char *suit[],const char *face[]){
