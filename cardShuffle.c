@@ -109,4 +109,36 @@ void threeOfKind(unsigned int hand[][2], char *suit[], char *face[]){
     }
 }
 
+//determine if there is straight in hand
+void straightHand(unsigned int hand[][2], char *suit[], char *face[]){
+	unsigned int s[5] = {0}; //array that holds a copy of hand
+	unsigned int temp; //temp int
+
+	//copy column locations to sort
+	for (size_t r = 0; r < 5; ++r)
+	{
+		s[r] = hand[r][1];
+	}
+
+	//bubble sort column locations
+	for (size_t pass = 1; pass < 5; ++pass)
+	{
+		for (size_t comp = 0; comp < 4; ++comp)
+		{
+			if (s[comp] > s[comp + 1])
+			{
+				temp = s[comp];
+				s[comp] = s[comp + 1];
+				s[comp + 1] = temp;
+			}
+		}
+	}
+
+	//check if sorted columns are a straight
+	if (s[4] - 1 == s[3] && s[3] -1 == s[2] && s[2] - 1 == s[1] && s[1] - 1 == s[0])
+	{
+		printf("The hand contains a straight from %s to %s.\n", face[s[0]], face[s[4]]);
+	}
+}
+
 
