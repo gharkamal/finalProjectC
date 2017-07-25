@@ -31,12 +31,16 @@ int main( void )
         "Nine", "Ten", "Jack", "Queen", "King"
     };
 // initialize deck array
-    unsigned int deck[ SUITS ][ FACES ] = { 0 };
+   unsigned int deck[ SUITS ][ FACES ] = { 0 };
    unsigned int hand[5][2];
 
    srand( time( NULL ) ); // seed random-number generator 32
+   for (int i = 0; i < 3; ++i)
+   {
     shuffle( deck ); // shuffle the deck
-    deal( deck, hand,  face, suit ); // deal the deck
+    deal( deck, hand,  face, suit ); // deal the deck/
+   }
+   
 }//endmain
 
 // shuffle cards in deck
@@ -105,19 +109,23 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
          } // end for
       } // end for
    } // end for
+
+    pair(hand, suit, face);
     threeOfKind(hand, suit, face);
     straightHand(hand, suit, face);
-    pair(hand, suit, face);
+    
+    flushHand(hand, suit, face);
 }
 
 void pair(unsigned int hand[][2],const char *suit[],const char *face[]){
 	  //counter that records how many cards of each rank are in the hand
-    unsigned int counter[FACES] = {0};
+    unsigned int counter[FACES] = {};
 
     //records how many cards of each rank are in teh hand
-    for (size_t i = 0; i < 5; ++i)
+    for (size_t i = 1; i < 6; ++i)
     {
-        ++counter[hand[i][1]];
+        counter[hand[i][1]]++;
+        printf("%d\n",hand[i][1] );
     }
 
     //print result if there is a three of a kind
@@ -125,19 +133,20 @@ void pair(unsigned int hand[][2],const char *suit[],const char *face[]){
     {
         if (counter[i] == 2)
             {
-                printf("The hand countains two %ss.\n", face[i]);
+                printf("The hand contains two %ss.\n", face[i]);
             }    
     }
 	}
 
 void threeOfKind(unsigned int hand[][2],const char *suit[],const char *face[]){
     //counter that records how many cards of each rank are in the hand
-    unsigned int counter[FACES] = {0};
+   unsigned int counter[FACES] = {};
 
     //records how many cards of each rank are in teh hand
-    for (size_t i = 0; i < 5; ++i)
+    for (size_t i = 1; i < 6; ++i)
     {
-        ++counter[hand[i][1]];
+        counter[hand[i][1]]++;
+        printf("%d\n",hand[i][1] );
     }
 
     //print result if there is a three of a kind
@@ -145,14 +154,36 @@ void threeOfKind(unsigned int hand[][2],const char *suit[],const char *face[]){
     {
         if (counter[i] == 3)
             {
-                printf("The hand countains three %ss.\n", face[i]);
+                printf("The hand contains three %ss.\n", face[i]);
             }    
     }
 }
 
+void fourOfKind(unsigned int hand[][2],const char *suit[],const char *face[]){
+	    //counter that records how many cards of each rank are in the hand
+   unsigned int counter[FACES] = {};
+
+    //records how many cards of each rank are in teh hand
+    for (size_t i = 1; i < 6; ++i)
+    {
+        counter[hand[i][1]]++;
+        printf("%d\n",hand[i][1] );
+    }
+
+    //print result if there is a three of a kind
+    for (size_t i = 0; i < FACES; ++i)
+    {
+        if (counter[i] == 4)
+            {
+                printf("The hand contains four %ss.\n", face[i]);
+            }    
+    }
+}
+
+
 //determine if there is straight in hand
 void straightHand(unsigned int hand[][2], const char *suit[], const char *face[]){
-	unsigned int s[5] = {0}; //array that holds a copy of hand
+	unsigned int s[5] = {}; //array that holds a copy of hand
 	unsigned int temp; //temp int
 
 	//copy column locations to sort
@@ -180,6 +211,27 @@ void straightHand(unsigned int hand[][2], const char *suit[], const char *face[]
 	{
 		printf("The hand contains a straight from %s to %s.\n", face[s[0]], face[s[4]]);
 	}
+}
+
+void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]){
+		    //counter that records how many cards of each rank are in the hand
+   unsigned int counter[SUITS] = {};
+
+    //records how many cards of each rank are in teh hand
+    for (size_t i = 1; i < 6; ++i)
+    {
+        counter[hand[i][0]]++;
+        printf("%d\n",hand[i][0] );
+    }
+
+    //print result if there is a three of a kind
+    for (size_t i = 0; i < FACES; ++i)
+    {
+        if (counter[i] == 5)
+            {
+                printf("The hand contains four %ss.\n", face[i]);
+            }    
+    }
 }
 
 
