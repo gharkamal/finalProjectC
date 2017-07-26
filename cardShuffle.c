@@ -33,12 +33,17 @@ int main( void )
         "Nine", "Ten", "Jack", "Queen", "King"
     };
 // initialize deck array
-   unsigned int deck[ SUITS ][ FACES ] = { 0 };
+ 
+   for (int i = 0; i < 100; ++i)
+   {
+        unsigned int deck[ SUITS ][ FACES ] = { 0 };
    unsigned int hand[5][2];
 
    srand( time( NULL ) ); // seed random-number generator 32
+   
    shuffle( deck ); // shuffle the deck
    deal( deck, hand,  face, suit ); // deal the deck/
+}
    
    
 }//endmain
