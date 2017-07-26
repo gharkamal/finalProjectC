@@ -23,6 +23,9 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
 
 int main( void )
 {
+	FILE *fptr; 
+	fptr = fopen("C:\\program.txt","w");
+	fprintf(fptr, "Hello bro\n");
     // initialize suit array
     const char *suit[ SUITS ] =
     { "Hearts", "Diamonds", "Clubs", "Spades" };
@@ -34,23 +37,26 @@ int main( void )
     };
 // initialize deck array
  	
- 		
+ 		srand( time( NULL ) ); // seed random-number generator 32
 
-for (int i = 0; i < 5; ++i)
-{
+	for (int i = 0; i < 5; ++i)
+	{
 	/* code */
 
- 	unsigned int deck[ SUITS ][ FACES ] = {0};
+ 		unsigned int deck[ SUITS ][ FACES ] = {0};
+
  
 		
- 		unsigned int hand[5][2];
+ 		unsigned int hand[5][2] = {};
      
-   		srand( time( NULL ) ); // seed random-number generator 32
+   		
    
   		shuffle( deck ); // shuffle the deck
    		deal( deck, hand,  face, suit ); // deal the deck/
- }
+
+ 	}
    
+   return 0;
 }//endmain
 
 // shuffle cards in deck
@@ -62,12 +68,6 @@ void shuffle( unsigned int wDeck[][FACES] )
 
 // for each of the cards, choose slot of deck randomly
 
-// initialize face array
-    const char *face[ FACES ] =
-    {   "Ace", "Deuce", "Three", "Four",
-        "Five", "Six", "Seven", "Eight",
-        "Nine", "Ten", "Jack", "Queen", "King"
-    };
      //printf("card printed; %d\n", wDeck[2][3]);
     for (card = 1; card <= CARDS; ++card ) {
         // choose new random location until unoccupied slot found
@@ -119,10 +119,10 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
          	
                hand[card][0] = row ;
                hand[card][1] = column ;
-            } // end if
-         } // end for
-      } // end for
-   } // end for
+            } 
+         } 
+      } 
+   }
 
     pair(hand, suit, face);
     threeOfKind(hand, suit, face);
@@ -301,8 +301,6 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
         counter2[hand2[i][1]]++;
         //printf("%d\n",hand2[i][1] );
     }
-
-
     //print result if there is a three of a kind
     for (size_t i = 0; i < FACES; ++i)
     {
@@ -342,5 +340,4 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
     {
     	printf("\nBoth sets are equal\n");
     }
-	
 }
