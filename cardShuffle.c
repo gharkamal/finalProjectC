@@ -18,6 +18,8 @@ void threeOfKind(unsigned int hand[][2], const char *suit[],const char *face[]);
 void fourOfKind(unsigned int hand[][2],const char *suit[],const char *face[]);
 void straightHand( unsigned int hand[][2],const char *suit[],const char *face[]);
 void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]);
+void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[]);
+
 
 int main( void )
 {
@@ -35,11 +37,9 @@ int main( void )
    unsigned int hand[5][2];
 
    srand( time( NULL ) ); // seed random-number generator 32
-   for (int i = 0; i < 3; ++i)
-   {
-    shuffle( deck ); // shuffle the deck
-    deal( deck, hand,  face, suit ); // deal the deck/
-   }
+   shuffle( deck ); // shuffle the deck
+   deal( deck, hand,  face, suit ); // deal the deck/
+   
    
 }//endmain
 
@@ -93,7 +93,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
     } // end function deal
 
 */
-       printf("Five cards given: \n"); //five cards for user
+       printf("First set of five cards given: \n"); //five cards for user
    for ( card = 1; card <= 5; ++card ) {
       // loop through rows of wDeck
       for ( row = 0; row < SUITS; ++row ) {
@@ -112,9 +112,11 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
 
     pair(hand, suit, face);
     threeOfKind(hand, suit, face);
+    fourOfKind(hand, suit, face);
     straightHand(hand, suit, face);
     
     flushHand(hand, suit, face);
+    dealTwo(wDeck, hand, suit, face);
 }
 
 void pair(unsigned int hand[][2],const char *suit[],const char *face[]){
@@ -234,4 +236,114 @@ void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]){
     }
 }
 
+void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[]){
+	int winner1 =0;
+	int winner2 =0;
+	unsigned int counter[FACES] = {};
+	unsigned int counter2[FACES] = {};
+	size_t card; // card counter
+    size_t row; // row counter
+    size_t column; // column counter
+   	unsigned int hand2[5][2];
 
+   
+   //records how many cards of each rank are in teh hand
+    for (size_t i = 1; i < 6; ++i)
+    {
+        counter[hand[i][1]]++;
+        printf("%d\n",hand[i][1] );
+    }
+
+
+    //print result if there is a three of a kind
+    for (size_t i = 0; i < FACES; ++i)
+    {
+        if (counter[i] == 2)
+            {
+                printf("deal2 The hand contains two %ss.\n", face[i]);
+                winner1++;
+            }  
+        if (counter[i] == 3)
+            {
+                printf("deal2 The hand contains three %ss.\n", face[i]);
+                winner1++;
+                
+            } 
+        if (counter[i] == 4)
+            {
+                printf("deal2 The hand contains four %ss.\n", face[i]);
+                winner1++;
+                
+            }
+        if (counter[i] == 5)
+            {
+                printf("deal2 The hand contains five %ss.\n", face[i]);
+                winner1++;
+            }   
+    }
+    
+        printf("Second set of five cards given: \n"); //five cards for user
+   for ( card = 6; card <= 10; ++card ) {
+      // loop through rows of wDeck
+      for ( row = 0; row < SUITS; ++row ) {
+         // loop through columns of wDeck for current row
+         for ( column = 0; column < FACES; ++column ) {
+            // if slot contains current card, display card
+            if (wDeck[row][column]==card) {
+               printf( "%5s of %-8s\n", face[ column ], suit[ row ]); 
+         	
+               hand2[card][0] = row ;
+               hand2[card][1] = column ;
+            } // end if
+         } // end for
+      } // end for
+   } // end for
+   //records how many cards of each rank are in teh hand
+    for (size_t i = 6; i < 11; ++i)
+    {
+        counter2[hand2[i][1]]++;
+        printf("%d\n",hand2[i][1] );
+    }
+
+
+    //print result if there is a three of a kind
+    for (size_t i = 0; i < FACES; ++i)
+    {
+        if (counter2[i] == 2)
+            {
+                printf("Set 2 The hand contains two %ss.\n", face[i]);
+                winner2++;
+            }  
+        if (counter2[i] == 3)
+            {
+                printf("Set 2 The hand contains three %ss.\n", face[i]);
+                winner2++;
+                
+            } 
+        if (counter2[i] == 4)
+            {
+                printf("Set 2 The hand contains four %ss.\n", face[i]);
+                winner2++;
+                
+            }
+        if (counter2[i] == 5)
+            {
+                printf("Set 2 The hand contains five %ss.\n", face[i]);
+                winner2++;
+            }   
+    }
+    
+    if(winner1 > winner2)
+    {
+    	printf("Set 1 is a better hand than set 2");
+    }
+    else if(winner2 > winner1)
+    {
+    	printf("Set 1 is a better hand than set 2");
+    }
+    else
+    {
+    	printf("Both sets are equal");
+    }
+	
+}
