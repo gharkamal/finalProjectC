@@ -37,20 +37,14 @@ int main( void )
     };
 // initialize deck array
  	
- 		srand( time( NULL ) ); // seed random-number generator 32
+ 	srand( time( NULL ) ); // seed random-number generator 32
 
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 100; ++i)
 	{
 	/* code */
 
  		unsigned int deck[ SUITS ][ FACES ] = {0};
-
- 
-		
  		unsigned int hand[5][2] = {};
-     
-   		
-   
   		shuffle( deck ); // shuffle the deck
    		deal( deck, hand,  face, suit ); // deal the deck/
 
