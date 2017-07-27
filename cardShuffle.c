@@ -35,16 +35,16 @@ int main( void )
 // initialize deck array
  	
  	srand( time( NULL ) ); // seed random-number generator 32
-    FILE *fptr; 
-    fptr = fopen("C:\\program.txt","w");
+    FILE *fptr; // create a file
+    fptr = fopen("C:\\program.txt","w"); //this is the file writer
     
 
 
 	for (int i = 0; i < 100; ++i)
 	{
         printf("GAME %d\n", i+1);
- 		unsigned int deck[ SUITS ][ FACES ] = {0};
- 		unsigned int hand[5][2] = {};
+ 		unsigned int deck[ SUITS ][ FACES ] = {0}; //set the deck back to zero
+ 		unsigned int hand[5][2] = {};  //the initial hand and is set to zero
   		shuffle( deck ); // shuffle the deck
         fprintf(fptr, "The winner for game %d is: ",  i+ 1);
    		deal( deck, hand,  face, suit, fptr); // deal the deck/
@@ -110,14 +110,15 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
             if (wDeck[row][column]==card) {
                printf( "%5s of %-8s\n", face[ column ], suit[ row ]); 
 
-               hand[card][0] = row ;
+               hand[card][0] = row ; //set the face and suit for the specific card for the first set
                hand[card][1] = column ;
             } 
          } 
       } 
    }
 
-    pair(hand, suit, face);
+   //check the different pairs for the first set
+    pair(hand, suit, face);  
     threeOfKind(hand, suit, face);
     fourOfKind(hand, suit, face);
     straightHand(hand, suit, face);
@@ -242,17 +243,17 @@ void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]){
     }
 }
 
-void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[], FILE *fptr){
-	int winner1 =0;
-	int winner2 =0;
-	unsigned int counter[FACES] = {};
+void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[], FILE *fptr){ //stub to set second hand from deck
+	int winner1 =0; //set 1 winner
+	int winner2 =0;//set 2 winner
+	unsigned int counter[FACES] = {}; //counter for the faces to check if has been repeated
 	unsigned int counter2[FACES] = {};
 	size_t card; // card counter
     size_t row; // row counter
     size_t column; // column counter
    	unsigned int hand2[10][2];
 
-   
+   //SET 1
    //records how many cards of each rank are in teh hand
     for (size_t i = 1; i < 6; ++i)
     {
@@ -268,6 +269,8 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
                 winner1++;
             }    
     }
+
+    //Set 2 is done here and uses same method as deal but the next 5 on deck
     
         printf("\nSET 2 FIVE CARD HAND: \n"); //five cards for user
    for ( card = 6; card <= 10; ++card ) {
@@ -289,17 +292,17 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
 
     for (size_t i = 6; i <= 10; ++i)
     {
-        counter2[hand2[i][1]] = 0;
+        counter2[hand2[i][1]] = 0; //sets the counter to zero just in case
         //printf("set two counter2 value and card: %d  and %d\n", counter2[hand2[i][1]], hand2[i][1]);
         //printf("%d\n",hand2[i][1] );
     }
     for (size_t i = 6; i <= 10; ++i)
     {
-        counter2[hand2[i][1]]++;
+        counter2[hand2[i][1]]++; //increments if there is more then one
         //printf("set two counter2 value: %d\n", counter2[hand[i][1]]);
         //printf("%d\n",hand2[i][1] );
     }
-    //print result if there is a three of a kind
+    //print result if there is a a type pair for the second hand SET 2
     for (size_t i = 0; i < FACES; ++i)
     {
         if (counter2[i] == 2)
@@ -326,7 +329,7 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
             }   
     }
     
-    if(winner1 > winner2)
+    if(winner1 > winner2) //if winner 1 has more type pairs it will be declared winner
     {
     	printf("\nRESULT: Set 1 is a better hand than set 2\n\n\n\n\n");
         fprintf( fptr,"Set 1 is the winner\n");
