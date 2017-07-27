@@ -1,68 +1,67 @@
-The winner for game 0 is: Set 2 is the winner
 The winner for game 1 is: Set 2 is the winner
 The winner for game 2 is: Set 2 is the winner
-The winner for game 3 is: Both sets are equal
+The winner for game 3 is: Set 2 is the winner
 The winner for game 4 is: Set 2 is the winner
-The winner for game 5 is: Set 2 is the winner
+The winner for game 5 is: Both sets are equal
 The winner for game 6 is: Set 2 is the winner
 The winner for game 7 is: Set 2 is the winner
 The winner for game 8 is: Both sets are equal
-The winner for game 9 is: Both sets are equal
-The winner for game 10 is: Both sets are equal
-The winner for game 11 is: Set 2 is the winner
+The winner for game 9 is: Set 2 is the winner
+The winner for game 10 is: Set 2 is the winner
+The winner for game 11 is: Both sets are equal
 The winner for game 12 is: Set 2 is the winner
-The winner for game 13 is: Set 2 is the winner
-The winner for game 14 is: Set 2 is the winner
+The winner for game 13 is: Set 1 is the winner
+The winner for game 14 is: Both sets are equal
 The winner for game 15 is: Set 2 is the winner
-The winner for game 16 is: Both sets are equal
+The winner for game 16 is: Set 2 is the winner
 The winner for game 17 is: Both sets are equal
 The winner for game 18 is: Set 2 is the winner
-The winner for game 19 is: Set 2 is the winner
+The winner for game 19 is: Both sets are equal
 The winner for game 20 is: Set 2 is the winner
 The winner for game 21 is: Both sets are equal
 The winner for game 22 is: Set 2 is the winner
 The winner for game 23 is: Set 2 is the winner
 The winner for game 24 is: Set 1 is the winner
-The winner for game 25 is: Both sets are equal
+The winner for game 25 is: Set 2 is the winner
 The winner for game 26 is: Set 2 is the winner
 The winner for game 27 is: Set 2 is the winner
 The winner for game 28 is: Set 2 is the winner
-The winner for game 29 is: Both sets are equal
-The winner for game 30 is: Set 1 is the winner
-The winner for game 31 is: Set 2 is the winner
+The winner for game 29 is: Set 2 is the winner
+The winner for game 30 is: Both sets are equal
+The winner for game 31 is: Both sets are equal
 The winner for game 32 is: Set 2 is the winner
-The winner for game 33 is: Set 1 is the winner
-The winner for game 34 is: Set 1 is the winner
+The winner for game 33 is: Set 2 is the winner
+The winner for game 34 is: Set 2 is the winner
 The winner for game 35 is: Set 2 is the winner
 The winner for game 36 is: Both sets are equal
 The winner for game 37 is: Both sets are equal
-The winner for game 38 is: Set 2 is the winner
+The winner for game 38 is: Set 1 is the winner
 The winner for game 39 is: Set 2 is the winner
 The winner for game 40 is: Set 2 is the winner
-The winner for game 41 is: Set 2 is the winner
-The winner for game 42 is: Both sets are equal
+The winner for game 41 is: Both sets are equal
+The winner for game 42 is: Set 2 is the winner
 The winner for game 43 is: Both sets are equal
-The winner for game 44 is: Set 2 is the winner
-The winner for game 45 is: Set 1 is the winner
-The winner for game 46 is: Set 1 is the winner
-The winner for game 47 is: Set 2 is the winner
-The winner for game 48 is: Set 2 is the winner
+The winner for game 44 is: Both sets are equal
+The winner for game 45 is: Set 2 is the winner
+The winner for game 46 is: Set 2 is the winner
+The winner for game 47 is: Both sets are equal
+The winner for game 48 is: Both sets are equal
 The winner for game 49 is: Set 2 is the winner
-The winner for game 50 is: Both sets are equal
+The winner for game 50 is: Set 2 is the winner
 The winner for game 51 is: Set 2 is the winner
 The winner for game 52 is: Both sets are equal
 The winner for game 53 is: Set 2 is the winner
 The winner for game 54 is: Set 2 is the winner
-The winner for game 55 is: Set 2 is the winner
+The winner for game 55 is: Both sets are equal
 The winner for game 56 is: Set 2 is the winner
 The winner for game 57 is: Set 2 is the winner
 The winner for game 58 is: Set 2 is the winner
-The winner for game 59 is: Both sets are equal
-The winner for game 60 is: Set 2 is the winner
+The winner for game 59 is: Set 2 is the winner
+The winner for game 60 is: Set 1 is the winner
 The winner for game 61 is: Both sets are equal
 The winner for game 62 is: Both sets are equal
-The winner for game 63 is: Both sets are equal
-The winner for game 64 is: Both sets are equal
+The winner for game 63 is: Set 1 is the winner
+The winner for game 64 is: Set 2 is the winner
 The winner for game 65 is: Set 2 is the winner
 The winner for game 66 is: Both sets are equal
 The winner for game 67 is: Set 2 is the winner
@@ -70,31 +69,32 @@ The winner for game 68 is: Set 2 is the winner
 The winner for game 69 is: Set 2 is the winner
 The winner for game 70 is: Set 2 is the winner
 The winner for game 71 is: Set 2 is the winner
-The winner for game 72 is: Set 2 is the winner
+The winner for game 72 is: Both sets are equal
 The winner for game 73 is: Both sets are equal
 The winner for game 74 is: Set 2 is the winner
-The winner for game 75 is: Both sets are equal
-The winner for game 76 is: Set 2 is the winner
-The winner for game 77 is: Set 1 is the winner
-The winner for game 78 is: Set 2 is the winner
+The winner for game 75 is: Set 2 is the winner
+The winner for game 76 is: Set 1 is the winner
+The winner for game 77 is: Set 2 is the winner
+The winner for game 78 is: Both sets are equal
 The winner for game 79 is: Both sets are equal
-The winner for game 80 is: Both sets are equal
+The winner for game 80 is: Set 2 is the winner
 The winner for game 81 is: Set 2 is the winner
-The winner for game 82 is: Set 2 is the winner
-The winner for game 83 is: Set 2 is the winner
-The winner for game 84 is: Set 2 is the winner
-The winner for game 85 is: Set 2 is the winner
-The winner for game 86 is: Set 2 is the winner
-The winner for game 87 is: Set 2 is the winner
-The winner for game 88 is: Set 2 is the winner
+The winner for game 82 is: Both sets are equal
+The winner for game 83 is: Both sets are equal
+The winner for game 84 is: Both sets are equal
+The winner for game 85 is: Set 1 is the winner
+The winner for game 86 is: Set 1 is the winner
+The winner for game 87 is: Both sets are equal
+The winner for game 88 is: Both sets are equal
 The winner for game 89 is: Both sets are equal
 The winner for game 90 is: Set 2 is the winner
 The winner for game 91 is: Both sets are equal
-The winner for game 92 is: Set 2 is the winner
+The winner for game 92 is: Set 1 is the winner
 The winner for game 93 is: Set 2 is the winner
-The winner for game 94 is: Both sets are equal
-The winner for game 95 is: Both sets are equal
-The winner for game 96 is: Set 2 is the winner
-The winner for game 97 is: Set 1 is the winner
+The winner for game 94 is: Set 2 is the winner
+The winner for game 95 is: Set 2 is the winner
+The winner for game 96 is: Both sets are equal
+The winner for game 97 is: Both sets are equal
 The winner for game 98 is: Both sets are equal
-The winner for game 99 is: Set 1 is the winner
+The winner for game 99 is: Both sets are equal
+The winner for game 100 is: Both sets are equal

@@ -8,7 +8,7 @@
 #define FACES 13
 #define CARDS 52
 
-// prototypes
+
 void shuffle(unsigned int wDeck[][ FACES ] ); // shuffling modifies wDeck
 void deal( unsigned int wDeck[][ FACES ], unsigned int hand[][2], const char *wFace[], const char *wSuit[], FILE *fptr); // dealing doesn't modify the arrays
 
@@ -42,16 +42,13 @@ int main( void )
 
 	for (int i = 0; i < 100; ++i)
 	{
-	/* code */
-
+        printf("GAME %d\n", i+1);
  		unsigned int deck[ SUITS ][ FACES ] = {0};
  		unsigned int hand[5][2] = {};
   		shuffle( deck ); // shuffle the deck
-        fprintf(fptr, "The winner for game %d is: ", i);
+        fprintf(fptr, "The winner for game %d is: ",  i+ 1);
    		deal( deck, hand,  face, suit, fptr); // deal the deck/
-
- }
-   
+    }
    return 0;
 }//endmain
 
@@ -103,7 +100,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
     } // end function deal
 
 */
-       printf("\nSet 1 of five cards are: \n"); //five cards for user
+       printf("\nSET 1 FIVE CARD HAND: \n"); //five cards for user
    for ( card = 1; card <= 5; ++card ) {
       // loop through rows of wDeck
       for ( row = 0; row < SUITS; ++row ) {
@@ -112,7 +109,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
             // if slot contains current card, display card
             if (wDeck[row][column]==card) {
                printf( "%5s of %-8s\n", face[ column ], suit[ row ]); 
-         	
+
                hand[card][0] = row ;
                hand[card][1] = column ;
             } 
@@ -124,7 +121,6 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
     threeOfKind(hand, suit, face);
     fourOfKind(hand, suit, face);
     straightHand(hand, suit, face);
-    
     flushHand(hand, suit, face);
     dealTwo(wDeck, hand, suit, face, fptr);
 }
@@ -273,7 +269,7 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
             }    
     }
     
-        printf("\nSet 2 of five cards are: \n"); //five cards for user
+        printf("\nSET 2 FIVE CARD HAND: \n"); //five cards for user
    for ( card = 6; card <= 10; ++card ) {
       // loop through rows of wDeck
       for ( row = 0; row < SUITS; ++row ) {
@@ -308,43 +304,43 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
     {
         if (counter2[i] == 2)
             {
-                printf("Set 2 The hand contains two %ss.\n", face[i]);
+                printf("The hand contains two %ss.\n", face[i]);
                 winner2++;
             }  
         if (counter2[i] == 3)
             {
-                printf("Set 2 The hand contains three %ss.\n", face[i]);
+                printf("The hand contains three %ss.\n", face[i]);
                 winner2++;
                 
             } 
         if (counter2[i] == 4)
             {
-                printf("Set 2 The hand contains four %ss.\n", face[i]);
+                printf("The hand contains four %ss.\n", face[i]);
                 winner2++;
                 
             }
         if (counter2[i] == 5)
             {
-                printf("Set 2 The hand contains five %ss.\n", face[i]);
+                printf("The hand contains five %ss.\n", face[i]);
                 winner2++;
             }   
     }
     
     if(winner1 > winner2)
     {
-    	printf("\nSet 1 is a better hand than set 2\n");
+    	printf("\nRESULT: Set 1 is a better hand than set 2\n\n\n\n\n");
         fprintf( fptr,"Set 1 is the winner\n");
         
     }
     else if(winner2 > winner1)
     {
-    	printf("\nSet 2 is a better hand than set 1\n");
-         fprintf(fptr, "Set 2 is the winner\n");
+    	printf("\nRESULT: Set 2 is a better hand than set 1\n\n\n\n\n");
+        fprintf(fptr, "Set 2 is the winner\n");
     }
     else
     {
-    	printf("\nBoth sets are equal\n");
-         fprintf(fptr, "Both sets are equal\n");
+    	printf("\nRESULT: Both sets are equal\n\n\n\n\n");
+        fprintf(fptr, "Both sets are equal\n");
 
     }
 }
