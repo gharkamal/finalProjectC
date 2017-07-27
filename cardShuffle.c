@@ -10,7 +10,7 @@
 
 // prototypes
 void shuffle(unsigned int wDeck[][ FACES ] ); // shuffling modifies wDeck
-void deal( unsigned int wDeck[][ FACES ], unsigned int hand[][2], const char *wFace[], const char *wSuit[]); // dealing doesn't modify the arrays
+void deal( unsigned int wDeck[][ FACES ], unsigned int hand[][2], const char *wFace[], const char *wSuit[], FILE *fptr); // dealing doesn't modify the arrays
 
 //functions to write
 void pair(unsigned int hand[][2], const char *suit[], const char *face[]);
@@ -18,14 +18,11 @@ void threeOfKind(unsigned int hand[][2], const char *suit[],const char *face[]);
 void fourOfKind(unsigned int hand[][2],const char *suit[],const char *face[]);
 void straightHand( unsigned int hand[][2],const char *suit[],const char *face[]);
 void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]);
-void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[]);
+void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[], FILE *fptr);
 
 
 int main( void )
 {
-	FILE *fptr; 
-	fptr = fopen("C:\\program.txt","w");
-	fprintf(fptr, "Hello bro\n");
     // initialize suit array
     const char *suit[ SUITS ] =
     { "Hearts", "Diamonds", "Clubs", "Spades" };
@@ -38,17 +35,22 @@ int main( void )
 // initialize deck array
  	
  	srand( time( NULL ) ); // seed random-number generator 32
+    FILE *fptr; 
+    fptr = fopen("C:\\program.txt","w");
+    
 
-	//for (int i = 0; i < 2; ++i)
-	//{
+
+	for (int i = 0; i < 100; ++i)
+	{
 	/* code */
 
  		unsigned int deck[ SUITS ][ FACES ] = {0};
  		unsigned int hand[5][2] = {};
   		shuffle( deck ); // shuffle the deck
-   		deal( deck, hand,  face, suit ); // deal the deck/
+        fprintf(fptr, "The winner for game %d is: ", i);
+   		deal( deck, hand,  face, suit, fptr); // deal the deck/
 
- //}
+ }
    
    return 0;
 }//endmain
@@ -79,7 +81,7 @@ void shuffle( unsigned int wDeck[][FACES] )
 } // end function shuffle
 
 //deal cards in deck
-void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[],const char *suit[] )
+void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[],const char *suit[], FILE *fptr )
 {
     size_t card; // card counter
     size_t row; // row counter
@@ -101,7 +103,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
     } // end function deal
 
 */
-       printf("Set 1 of five cards are: \n"); //five cards for user
+       printf("\nSet 1 of five cards are: \n"); //five cards for user
    for ( card = 1; card <= 5; ++card ) {
       // loop through rows of wDeck
       for ( row = 0; row < SUITS; ++row ) {
@@ -124,7 +126,7 @@ void deal( unsigned int wDeck[][FACES],unsigned int hand[][2], const char *face[
     straightHand(hand, suit, face);
     
     flushHand(hand, suit, face);
-    dealTwo(wDeck, hand, suit, face);
+    dealTwo(wDeck, hand, suit, face, fptr);
 }
 
 void pair(unsigned int hand[][2],const char *suit[],const char *face[]){
@@ -244,7 +246,7 @@ void flushHand(unsigned int hand[][2],const char *suit[],const char *face[]){
     }
 }
 
-void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[]){
+void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *suit[],const char *face[], FILE *fptr){
 	int winner1 =0;
 	int winner2 =0;
 	unsigned int counter[FACES] = {};
@@ -252,7 +254,7 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
 	size_t card; // card counter
     size_t row; // row counter
     size_t column; // column counter
-   	unsigned int hand2[5][2];
+   	unsigned int hand2[10][2];
 
    
    //records how many cards of each rank are in teh hand
@@ -272,7 +274,7 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
     }
     
         printf("\nSet 2 of five cards are: \n"); //five cards for user
-   for ( card = 1; card <= 5; ++card ) {
+   for ( card = 6; card <= 10; ++card ) {
       // loop through rows of wDeck
       for ( row = 0; row < SUITS; ++row ) {
          // loop through columns of wDeck for current row
@@ -288,9 +290,17 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
       } // end for
    } // end for
    //records how many cards of each rank are in teh hand
-    for (size_t i = 1; i < 6; ++i)
+
+    for (size_t i = 6; i <= 10; ++i)
+    {
+        counter2[hand2[i][1]] = 0;
+        //printf("set two counter2 value and card: %d  and %d\n", counter2[hand2[i][1]], hand2[i][1]);
+        //printf("%d\n",hand2[i][1] );
+    }
+    for (size_t i = 6; i <= 10; ++i)
     {
         counter2[hand2[i][1]]++;
+        //printf("set two counter2 value: %d\n", counter2[hand[i][1]]);
         //printf("%d\n",hand2[i][1] );
     }
     //print result if there is a three of a kind
@@ -323,13 +333,18 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
     if(winner1 > winner2)
     {
     	printf("\nSet 1 is a better hand than set 2\n");
+        fprintf( fptr,"Set 1 is the winner\n");
+        
     }
     else if(winner2 > winner1)
     {
     	printf("\nSet 2 is a better hand than set 1\n");
+         fprintf(fptr, "Set 2 is the winner\n");
     }
     else
     {
     	printf("\nBoth sets are equal\n");
+         fprintf(fptr, "Both sets are equal\n");
+
     }
 }
