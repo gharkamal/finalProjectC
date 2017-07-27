@@ -39,8 +39,8 @@ int main( void )
  	
  	srand( time( NULL ) ); // seed random-number generator 32
 
-	for (int i = 0; i < 100; ++i)
-	{
+	//for (int i = 0; i < 2; ++i)
+	//{
 	/* code */
 
  		unsigned int deck[ SUITS ][ FACES ] = {0};
@@ -48,7 +48,7 @@ int main( void )
   		shuffle( deck ); // shuffle the deck
    		deal( deck, hand,  face, suit ); // deal the deck/
 
- 	}
+ //}
    
    return 0;
 }//endmain
@@ -268,13 +268,11 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
         if (counter[i] == 2 || counter[i] == 3 || counter[i] == 4 || counter[i] == 5)
             {
                 winner1++;
-            }  
-       
-       
+            }    
     }
     
         printf("\nSet 2 of five cards are: \n"); //five cards for user
-   for ( card = 6; card <= 10; ++card ) {
+   for ( card = 1; card <= 5; ++card ) {
       // loop through rows of wDeck
       for ( row = 0; row < SUITS; ++row ) {
          // loop through columns of wDeck for current row
@@ -290,7 +288,7 @@ void dealTwo(unsigned int wDeck[][FACES], unsigned int hand[][2],const char *sui
       } // end for
    } // end for
    //records how many cards of each rank are in teh hand
-    for (size_t i = 6; i < 11; ++i)
+    for (size_t i = 1; i < 6; ++i)
     {
         counter2[hand2[i][1]]++;
         //printf("%d\n",hand2[i][1] );
